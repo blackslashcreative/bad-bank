@@ -18,7 +18,7 @@ function App() {
   return (
     <Router>
         <Nav/>
-        <div className="container mt-5">
+        <div className="container mt-3">
           <UserContext.Provider value={{users:[{name:'ross',email:'ross@blacksla.sh',password:'s2ijsl8*j',balance:100}]}}>
             <Routes>
               <Route path="/" exact          element={<Home/>} />
