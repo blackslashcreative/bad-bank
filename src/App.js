@@ -8,6 +8,7 @@ import {
 import Home from "./components/home.js";
 import About from "./components/about.js";
 import Products from "./components/products.js";
+import { UserContext } from './UserContext.js';
 
 function App() {
 
@@ -19,11 +20,13 @@ function App() {
         <Link to="/about/">About</Link> --
         <Link to="/products/">Products</Link> --
         <hr/>
-        <Routes>
-          <Route path="/" exact    element={<Home />} />
-          <Route path="/about/"    element={<About />} />
-          <Route path="/products/" element={<Products />} />
-        </Routes>
+        <UserContext.Provider value={{users:['peter']}}>
+          <Routes>
+            <Route path="/" exact    element={<Home />} />
+            <Route path="/about/"    element={<About />} />
+            <Route path="/products/" element={<Products />} />
+          </Routes>
+        </UserContext.Provider>
       </div>
     </Router>
   );
