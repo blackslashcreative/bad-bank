@@ -2,9 +2,9 @@ import './App.css';
 import {
   BrowserRouter as Router,
   Routes,
-  Route,
-  Link
+  Route
 } from 'react-router-dom';
+import Nav from "./components/nav.js";
 import Home from "./components/home.js";
 import About from "./components/about.js";
 import Products from "./components/products.js";
@@ -16,9 +16,7 @@ function App() {
     <Router>
       <div>
         <h1>Routing - Hello World</h1>
-        <Link to="/">Home</Link> --
-        <Link to="/about/">About</Link> --
-        <Link to="/products/">Products</Link> --
+        <Nav />
         <hr/>
         <UserContext.Provider value={{users:['peter']}}>
           <Routes>
