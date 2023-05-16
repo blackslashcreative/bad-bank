@@ -20,9 +20,9 @@ function App() {
         <Link to="/products/">Products</Link> --
         <hr/>
         <Routes>
-          <Route path="/" exact component={Home} />
-          <Route path="/about/" component={About} />
-          <Route path="/products/" component={Products} />
+          <Route path="/" exact    element={<Home />} />
+          <Route path="/about/"    element={<About />} />
+          <Route path="/products/" element={<Products />} />
         </Routes>
       </div>
     </Router>
