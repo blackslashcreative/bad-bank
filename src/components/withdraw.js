@@ -1,15 +1,15 @@
 import React from "react";
 import { UserContext } from '../UserContext.js';
 
-function Home() {
+function Withdraw() {
   const ctx = React.useContext(UserContext);
 
   return (
     <div>
-      <h3>Bad Bank</h3>
+      <h3>Withdraw</h3>
       {JSON.stringify(ctx)}
     </div>
   )
 }
 
-export default Home;
+export default Withdraw;
