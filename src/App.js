@@ -19,7 +19,7 @@ function App() {
     <Router>
         <Nav/>
         <div className="container mt-3">
-          <UserContext.Provider value={{}}>
+          <UserContext.Provider value={{users:[]}}>
             <Routes>
               <Route path="/" exact          element={<Home/>} />
               <Route path="/create-account/" element={<CreateAccount/>} />
