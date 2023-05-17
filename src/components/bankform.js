@@ -18,11 +18,10 @@ function BankForm({label, handle, successButton}){
   }
 
   function handleFormSubmit(){
-    console.log(name,email,password);
     if (!validate(name, 'name')) return;
     if (!validate(email, 'email')) return;
     if (!validate(password, 'password')) return;
-    handle();
+    handle({name:name,email:email,password:password});
     setShow(false);
   }
   

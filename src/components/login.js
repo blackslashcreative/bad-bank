@@ -1,14 +1,22 @@
 import React from "react";
-import { UserContext } from '../UserContext.js';
+import BankForm        from './bankform.js';
+// import { UserContext } from '../UserContext.js';
 
 function Login() {
-  const ctx = React.useContext(UserContext);
+  // const ctx = React.useContext(UserContext);
+
+  function handle(data){
+    // Todo: write login handle
+  }
 
   return (
-    <div>
-      <h3>Login</h3>
-      {JSON.stringify(ctx)}
-    </div>
+    <BankForm
+      label="Login"
+      handle={handle}
+      /*hideName={true}*/
+      hideAmount={true}
+      successButton="You are logged in."
+    />
   )
 }
 

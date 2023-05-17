@@ -4,7 +4,6 @@ import { UserContext } from '../UserContext.js';
 
 function CreateAccount() {
   const ctx = React.useContext(UserContext);
-  console.log(ctx);
   
   function handle(data){
     ctx.users.push({

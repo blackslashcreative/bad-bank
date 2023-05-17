@@ -1,14 +1,23 @@
 import React from "react";
 import { UserContext } from '../UserContext.js';
+import Card from './cards.js';
 
 function AllData() {
   const ctx = React.useContext(UserContext);
 
+  let printData = '';
+  ctx.users.forEach((element) => {
+    printData += 'Name: '     + element.name;
+    printData += 'Email: '    + element.email;
+    printData += 'Password: ' + element.password;
+    printData += 'Balance: '  + element.balance;
+  });
+
   return (
-    <div>
-      <h3>All Data</h3>
-      {JSON.stringify(ctx)}
-    </div>
+    <Card
+      header="All Data"
+      body={printData}
+    />
   )
 }
 
