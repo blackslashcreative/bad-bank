@@ -1,50 +1,64 @@
-import React from "react";
+import React        from 'react';
+import { useState, useContext } from 'react';
+import { BankContext } from '../BankContext.js';
 
-function BankForm({handle, hideName}){
-  const [show, setShow]           = React.useState(true);
-  const [status, setStatus]       = React.useState('');
-  const [name, setName]           = React.useState('');
-  const [email, setEmail]         = React.useState('');
-  const [password, setPassword]   = React.useState('');
+function BankForm({handle, hideEmail}){
+  const ctx = useContext(BankContext);
 
-  function validate(field, label){
-    if (!field) {
-      setStatus('Error: ' + label);
-      setTimeout(() => setStatus(''),3000);
-      return false;
+  const [errorMessage, setErrorMessage] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
+
+    setErrorMessage('');
+    const user = ctx.users.find(user => user.username === username);
+    if (!user) {
+      setErrorMessage('This username is invalid.');
+      return;
     }
-    return true;
+    if (user.password !== password) {
+      setErrorMessage('Invalid password. Please check and try again.');
+      return;
+    }
+    handle({username:username,email:email,password:password});
   }
 
-  function handleFormSubmit(){
-    if (!validate(name, 'name')) return;
-    if (!validate(email, 'email')) return;
-    if (!validate(password, 'password')) return;
-    handle({name:name,email:email,password:password});
-    setShow(false);
-  }
-
-  return (
-    show ? (
-        <>
+  const renderFormFields = () => {
+    return (
+      <>
+        <div className="form-group">
         Name<br/>
         <input type="input" className="form-control" id="name"
-        placeholder="Name" value={name} onChange={e => setName(e.currentTarget.value)} /><br/>
-        Email<br/>
-        <input type="input" className="form-control" id="email"
-        placeholder="Email" value={email} onChange={e => setEmail(e.currentTarget.value)} /><br/>
+        placeholder="Username" value={username} onChange={e => setUsername(e.currentTarget.value)} /><br/>
+      </div>
+      {!hideEmail && (
+        <div className="form-group">
+          Email<br/><input type="input" className="form-control" id="email"
+          placeholder="Email" value={email} onChange={e => setEmail(e.currentTarget.value)} /><br/>
+        </div>
+      )}
+      <div className="form-group">
         Password<br/>
         <input type="password" className="form-control" id="password"
         placeholder="Password" value={password} onChange={e => setPassword(e.currentTarget.value)} /><br/>
-        <button type="submit" className="btn btn-light" onClick={handleFormSubmit}>Create Account</button>
-        </>
-      ) : (
-        <>
-        <div className="alert alert-success" role="alert">
-          Success
-        </div>
-        </>
+      </div>
+    </>
     )
+  }
+
+  return (
+    <>
+      <form>
+        {renderFormFields()}
+        <button type="submit" className="btn btn-light" onClick={handleFormSubmit}>Create Account</button>
+      </form>
+      {errorMessage && <div className="alert alert-danger" role="alert">{errorMessage}</div>}
+      {successMessage && <div className="alert alert-success" role="alert">{successMessage}</div>}
+    </>
   )  
 }
 
