@@ -1,9 +1,9 @@
 import React from "react";
-// import BankForm        from './bankform.js';
-// import { UserContext } from '../UserContext.js';
+import BankForm        from './bankform.js';
+import { BankContext } from '../BankContext.js';
 
 function Login() {
-  // const ctx = React.useContext(UserContext);
+  const ctx = React.useContext(BankContext);
 
   function handle(data){
     // Todo: write login handle
@@ -13,7 +13,10 @@ function Login() {
     <div className="card mb-3">
       <div className="card-header">Login</div>
       <div className="card-body">
-        login BankForm here?
+        <BankForm 
+          handle={handle}
+          hideName={true}
+        />
       </div>
     </div>
   )

@@ -1,22 +1,17 @@
-import React from "react";
-import { UserContext } from '../UserContext.js';
+import React from 'react';
+import { useContext } from 'react';
+import { BankContext } from '../BankContext.js';
 
 function AllData() {
-  const ctx = React.useContext(UserContext);
-
-  let printData = '';
-  ctx.users.forEach((element) => {
-    printData += 'Name: '     + element.name;
-    printData += 'Email: '    + element.email;
-    printData += 'Password: ' + element.password;
-    printData += 'Balance: '  + element.balance;
-  });
+  const ctx = useContext(BankContext);
+  const loggedInUser = ctx.loggedInUser;
 
   return (
     <div className="card mb-3">
       <div className="card-header">Bank Data</div>
       <div className="card-body">
-        {printData}
+        {loggedInUser && <p>{loggedInUser} is logged in.</p>}
+        {JSON.stringify(ctx.users, null, '\n')}
       </div>
     </div>
   )

@@ -1,8 +1,8 @@
 import React from "react";
-import { UserContext } from '../UserContext.js';
+//import { BankContext } from '../BankContext.js';
 
 function Deposit() {
-  //const ctx = React.useContext(UserContext);
+  //const ctx = React.useContext(BankContext);
 
   return (
     <div className="card mb-3">

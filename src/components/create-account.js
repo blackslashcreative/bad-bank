@@ -1,9 +1,9 @@
 import React           from "react";
 import BankForm        from './bankform.js';
-import { UserContext } from '../UserContext.js';
+import { BankContext } from '../BankContext.js';
 
 function CreateAccount() {
-  const ctx = React.useContext(UserContext);
+  const ctx = React.useContext(BankContext);
   
   function handle(data){
     ctx.users.push({

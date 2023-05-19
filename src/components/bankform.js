@@ -1,6 +1,6 @@
 import React from "react";
 
-function BankForm({handle, hideName, successButton}){
+function BankForm({handle, hideName}){
   const [show, setShow]           = React.useState(true);
   const [status, setStatus]       = React.useState('');
   const [name, setName]           = React.useState('');
@@ -23,13 +23,6 @@ function BankForm({handle, hideName, successButton}){
     handle({name:name,email:email,password:password});
     setShow(false);
   }
-  
-  function clearForm(){
-    setName('');
-    setEmail('');
-    setPassword('');
-    setShow(true);
-  }
 
   return (
     show ? (
@@ -47,8 +40,9 @@ function BankForm({handle, hideName, successButton}){
         </>
       ) : (
         <>
-        <h5>Success</h5>
-        <button type="submit" className="btn btn-light" onClick={clearForm}>{successButton}</button>
+        <div className="alert alert-success" role="alert">
+          Success
+        </div>
         </>
     )
   )  
