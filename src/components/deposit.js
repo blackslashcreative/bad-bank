@@ -2,12 +2,14 @@ import React from "react";
 import { UserContext } from '../UserContext.js';
 
 function Deposit() {
-  const ctx = React.useContext(UserContext);
+  //const ctx = React.useContext(UserContext);
 
   return (
-    <div>
-      <h3>Deposit</h3>
-      {JSON.stringify(ctx)}
+    <div className="card mb-3">
+      <div className="card-header">Create Account</div>
+      <div className="card-body">
+        do stuff
+      </div>
     </div>
   )
 }

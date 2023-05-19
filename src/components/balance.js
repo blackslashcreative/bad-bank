@@ -5,9 +5,11 @@ function Balance() {
   const ctx = React.useContext(UserContext);
 
   return (
-    <div>
-      <h3>Balance</h3>
-      {JSON.stringify(ctx)}
+    <div className="card mb-3">
+      <div className="card-header">Balance</div>
+      <div className="card-body">
+        do stuff
+      </div>
     </div>
   )
 }

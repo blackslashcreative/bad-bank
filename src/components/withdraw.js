@@ -2,12 +2,14 @@ import React from "react";
 import { UserContext } from '../UserContext.js';
 
 function Withdraw() {
-  const ctx = React.useContext(UserContext);
+  //const ctx = React.useContext(UserContext);
 
   return (
-    <div>
-      <h3>Withdraw</h3>
-      {JSON.stringify(ctx)}
+    <div className="card mb-3">
+      <div className="card-header">Withdraw</div>
+      <div className="card-body">
+        do stuff
+      </div>
     </div>
   )
 }

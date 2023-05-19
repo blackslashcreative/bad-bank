@@ -1,5 +1,5 @@
 import React from "react";
-import BankForm        from './bankform.js';
+// import BankForm        from './bankform.js';
 // import { UserContext } from '../UserContext.js';
 
 function Login() {
@@ -10,13 +10,12 @@ function Login() {
   }
 
   return (
-    <BankForm
-      label="Login"
-      handle={handle}
-      /*hideName={true}*/
-      hideAmount={true}
-      successButton="You are logged in."
-    />
+    <div className="card mb-3">
+      <div className="card-header">Login</div>
+      <div className="card-body">
+        login BankForm here?
+      </div>
+    </div>
   )
 }
 

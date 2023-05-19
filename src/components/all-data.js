@@ -1,6 +1,5 @@
 import React from "react";
 import { UserContext } from '../UserContext.js';
-import Card from './cards.js';
 
 function AllData() {
   const ctx = React.useContext(UserContext);
@@ -14,10 +13,12 @@ function AllData() {
   });
 
   return (
-    <Card
-      header="All Data"
-      body={printData}
-    />
+    <div className="card mb-3">
+      <div className="card-header">Bank Data</div>
+      <div className="card-body">
+        {printData}
+      </div>
+    </div>
   )
 }
 

@@ -16,12 +16,16 @@ function CreateAccount() {
   }
 
   return (
-    <BankForm
-      label="Create Account"
-      handle={handle}
-      hideAmount={true}
-      successButton="Add another account"
-    />
+    <div className="card mb-3">
+      <div className="card-header">Create Account</div>
+      <div className="card-body">
+        <BankForm
+          handle={handle}
+          hideAmount={true}
+          successButton="Add another account"
+        />
+      </div>
+    </div>
   )
 }
 
