@@ -10,6 +10,7 @@ function BankForm({formName, hideEmail}){
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [amount, setAmount] = useState('');
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
@@ -47,36 +48,75 @@ function BankForm({formName, hideEmail}){
       ctx.loggedInUser = username;
       setSuccessMessage('Your account has been created.');
     }
+    if (formName === "Deposit" || formName === "Withdraw") {
+      // Handle Deposit / Withdraw
+      if(amount) {
+        const currentUser = ctx.users.find(user => user.username === ctx.loggedInUser);
+        let prevBalance = currentUser.balance;
+        if (formName === "Deposit") {
+          currentUser.balance = Number(prevBalance) + Number(amount);
+        } else {
+          currentUser.balance = Number(prevBalance) - Number(amount);
+        }
+        setAmount(currentUser.balance);
+      }
+      else {
+        setErrorMessage('Please set an amount.');
+        return;
+      }
+    }
   }
 
   const renderFormFields = () => {
-    return (
-      <>
-        <div className="form-group">
-        Name<br/>
-        <input type="input" className="form-control" id="name"
-        placeholder="Username" value={username} onChange={e => setUsername(e.currentTarget.value)} /><br/>
-      </div>
-      {!hideEmail && (
-        <div className="form-group">
-          Email<br/><input type="input" className="form-control" id="email"
-          placeholder="Email" value={email} onChange={e => setEmail(e.currentTarget.value)} /><br/>
-        </div>
-      )}
-      <div className="form-group">
-        Password<br/>
-        <input type="password" className="form-control" id="password"
-        placeholder="Password" value={password} onChange={e => setPassword(e.currentTarget.value)} /><br/>
-      </div>
-    </>
-    )
+    if (formName === "Deposit" || formName === "Withdraw") {
+      if (ctx.loggedInUser) {
+        const currentUser = ctx.users.find(user => user.username === ctx.loggedInUser);
+        return (
+          <>
+            <div className="form-group">
+              Amount<br/>
+              <input type="number" className="form-control" id="amount"
+              value={amount} min="0" max={currentUser.balance} onChange={e => setAmount(e.currentTarget.value)} /><br/>
+            </div>
+            <button type="submit" className="btn btn-light" onClick={handleFormSubmit}>{formName}</button>
+            <p className="mt-3">Account Balance: ${currentUser.balance}</p>
+          </>
+        )
+      }
+      else {
+        return 'Please log in.';
+      }
+    }
+    else
+    {
+      return (
+        <>
+          <div className="form-group">
+            Name<br/>
+            <input type="input" className="form-control" id="name"
+            placeholder="Username" value={username} onChange={e => setUsername(e.currentTarget.value)} /><br/>
+          </div>
+          {!hideEmail && (
+            <div className="form-group">
+              Email<br/><input type="input" className="form-control" id="email"
+              placeholder="Email" value={email} onChange={e => setEmail(e.currentTarget.value)} /><br/>
+            </div>
+          )}
+          <div className="form-group">
+            Password<br/>
+            <input type="password" className="form-control" id="password"
+            placeholder="Password" value={password} onChange={e => setPassword(e.currentTarget.value)} /><br/>
+          </div>
+          <button type="submit" className="btn btn-light" onClick={handleFormSubmit}>{formName}</button>
+        </>
+      )
+    }
   }
 
   return (
     <>
       <form>
         {renderFormFields()}
-        <button type="submit" className="btn btn-light" onClick={handleFormSubmit}>{formName}</button>
       </form>
       {errorMessage && <div className="alert alert-danger mt-3" role="alert">{errorMessage}</div>}
       {successMessage && <div className="alert alert-success mt-3" role="alert">{successMessage}</div>}

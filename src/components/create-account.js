@@ -1,5 +1,5 @@
-import React           from "react";
-import BankForm        from './bankform.js';
+import React    from "react";
+import BankForm from './bankform.js';
 
 function CreateAccount() {
 
