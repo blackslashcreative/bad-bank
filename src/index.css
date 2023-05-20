@@ -1,3 +1,9 @@
+/* Layout */
+.container, .navbar {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
 /* Header & Navigation */ 
 .logo {
   max-width: 80px;
@@ -25,4 +31,13 @@
 /* Cards */ 
 .card-header {
   font-size: 2em;
+}
+
+/* Typography */
+h1 {
+  margin-bottom: 15px;
+}
+
+.capitalize {
+  text-transform: capitalize;
 }

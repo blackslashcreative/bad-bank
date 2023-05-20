@@ -9,7 +9,9 @@ function Home() {
   return (
     <div className="container">
       <h1>Welcome to BadBank</h1>
-      {!ctx.loggedInUser && (
+      {ctx.loggedInUser ? (
+        <p>You're logged in as <b className="capitalize">{ctx.loggedInUser}</b>.</p>
+      ) : (
         <Login/>
       )}
       <p className="text-danger">Your data is not secure, but it's fun to play around with! lol</p>
