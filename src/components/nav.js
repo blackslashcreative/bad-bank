@@ -24,9 +24,6 @@ function Nav() {
               <Link className="nav-link" to="/withdraw/">Withdraw</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/balance/">Balance</Link>
-            </li>
-            <li className="nav-item">
               <Link className="nav-link" to="/all-data/">All Data</Link>
             </li>
           </ul>

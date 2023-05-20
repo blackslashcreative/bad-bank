@@ -12,7 +12,7 @@ function Home() {
       {!ctx.loggedInUser && (
         <Login/>
       )}
-      <p>Your data is not secure, but it's fun to play around with! lol</p>
+      <p className="text-danger">Your data is not secure, but it's fun to play around with! lol</p>
     </div>
   )
 }
