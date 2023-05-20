@@ -2,7 +2,7 @@ import React        from 'react';
 import { useState, useContext } from 'react';
 import { BankContext } from '../BankContext.js';
 
-function BankForm({handle, hideEmail}){
+function BankForm({formName, hideEmail}){
   const ctx = useContext(BankContext);
 
   const [errorMessage, setErrorMessage] = useState('');
@@ -15,16 +15,38 @@ function BankForm({handle, hideEmail}){
     event.preventDefault();
 
     setErrorMessage('');
-    const user = ctx.users.find(user => user.username === username);
-    if (!user) {
-      setErrorMessage('This username is invalid.');
-      return;
+    const userExists = ctx.users.find(user => user.username === username);
+    const userEmailExists = ctx.users.find(user => user.email === email);
+    if (formName === "Login") {
+      // Handle Login Form
+      if (!userExists) {
+        setErrorMessage('This username is invalid.');
+        return;
+      }
+      if (userExists.password !== password) {
+        setErrorMessage('Invalid password. Please check and try again.');
+        return;
+      }
+      ctx.loggedInUser = username;   
+      setSuccessMessage('Logged in as ' + username);
     }
-    if (user.password !== password) {
-      setErrorMessage('Invalid password. Please check and try again.');
-      return;
+    if (formName === "Create Account") {
+      // Handle Create Account Form
+      if (userExists || userEmailExists) {
+        setErrorMessage('This user has already been registered. Please log in.');
+      }
+      if (!username) {
+        setErrorMessage('Please set a username.');
+        return;
+      }
+      if (!password) {
+        setErrorMessage('Please set a password.');
+        return;
+      }
+      ctx.users.push({ "username": username, "email": email, "password": password, "balance": 100 });
+      ctx.loggedInUser = username;
+      setSuccessMessage('Your account has been created.');
     }
-    handle({username:username,email:email,password:password});
   }
 
   const renderFormFields = () => {
@@ -54,10 +76,10 @@ function BankForm({handle, hideEmail}){
     <>
       <form>
         {renderFormFields()}
-        <button type="submit" className="btn btn-light" onClick={handleFormSubmit}>Create Account</button>
+        <button type="submit" className="btn btn-light" onClick={handleFormSubmit}>{formName}</button>
       </form>
-      {errorMessage && <div className="alert alert-danger" role="alert">{errorMessage}</div>}
-      {successMessage && <div className="alert alert-success" role="alert">{successMessage}</div>}
+      {errorMessage && <div className="alert alert-danger mt-3" role="alert">{errorMessage}</div>}
+      {successMessage && <div className="alert alert-success mt-3" role="alert">{successMessage}</div>}
     </>
   )  
 }

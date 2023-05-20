@@ -1,15 +1,15 @@
 import React from "react";
-//import { UserContext } from '../UserContext.js';
+import Login from './login.js';
+//import { BankContext } from '../BankContext.js';
 
 function Home() {
   //const ctx = React.useContext(UserContext);
 
   return (
-    <div className="card mb-3">
-      <div className="card-header">Welcome to BadBank</div>
-      <div className="card-body">
-        Your data is not secure, but it's fun to play around with! lol
-      </div>
+    <div className="container">
+      <h1>Welcome to BadBank</h1>
+      <Login/>
+      <p>Your data is not secure, but it's fun to play around with! lol</p>
     </div>
   )
 }

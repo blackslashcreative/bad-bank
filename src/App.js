@@ -15,7 +15,7 @@ import { BankContext } from './BankContext.js';
 
 function App() {
   const defaultContext = {
-    loggedInUser: 'ghosty',
+    loggedInUser: null,
     users: [
       {
         username: 'ghosty', email: 'ghosty@blacksla.sh', password: 'secret', balance: 100
