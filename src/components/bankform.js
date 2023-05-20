@@ -12,6 +12,12 @@ function BankForm({formName, hideEmail}){
   const [password, setPassword] = useState('');
   const [amount, setAmount] = useState('');
 
+  const clearForm = () => {
+    setUsername('');
+    setEmail('');
+    setPassword('');
+  }
+
   const handleFormSubmit = (event) => {
     event.preventDefault();
 
@@ -46,6 +52,7 @@ function BankForm({formName, hideEmail}){
       }
       ctx.users.push({ "username": username, "email": email, "password": password, "balance": 100 });
       ctx.loggedInUser = username;
+      clearForm();
       setSuccessMessage('Your account has been created.');
     }
     if (formName === "Deposit" || formName === "Withdraw") {
