@@ -44,10 +44,17 @@ function BankForm({formName, hideEmail}){
       }
       if (!username) {
         setErrorMessage('Please set a username.');
+        setSuccessMessage('');
         return;
       }
-      if (!password) {
-        setErrorMessage('Please set a password.');
+      if (!email) {
+        setErrorMessage('Please enter your email address.');
+        setSuccessMessage('');
+        return;
+      }
+      if (password.length < 8) {
+        setErrorMessage('Please set a stronger password.');
+        setSuccessMessage('');
         return;
       }
       ctx.users.push({ "username": username, "email": email, "password": password, "balance": 100 });
