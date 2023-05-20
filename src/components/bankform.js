@@ -76,7 +76,7 @@ function BankForm({formName, hideEmail}){
             setErrorMessage('Transaction failed.');
           }
         }
-        setAmount(currentUser.balance);
+        setAmount('0');
       }
       else {
         setErrorMessage('Please set an amount.');
