@@ -92,12 +92,12 @@ function BankForm({formName, hideEmail}){
         return (
           <>
             <div className="form-group">
+              <p className="mt-3 text-success">Account Balance: ${currentUser.balance}</p>
               Amount<br/>
               <input type="number" className="form-control" id="amount"
               value={amount} min="0" max={currentUser.balance} onChange={e => setAmount(e.currentTarget.value)} /><br/>
             </div>
             <button type="submit" className="btn btn-light" onClick={handleFormSubmit}>{formName}</button>
-            <p className="mt-3">Account Balance: ${currentUser.balance}</p>
           </>
         )
       }
