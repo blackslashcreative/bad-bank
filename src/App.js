@@ -6,7 +6,7 @@ import {
 import Nav from "./components/nav.js";
 import Home from "./components/home.js";
 import CreateAccount from "./components/create-account.js";
-import Login from "./components/login.js";
+//import Login from "./components/login.js";
 import Deposit from "./components/deposit.js";
 import Withdraw from "./components/withdraw.js";
 import Balance from "./components/balance.js";
@@ -30,7 +30,6 @@ function App() {
             <Routes>
               <Route path="/" exact          element={<Home/>} />
               <Route path="/create-account/" element={<CreateAccount/>} />
-              <Route path="/login/"          element={<Login/>} />
               <Route path="/deposit/"        element={<Deposit/>} />
               <Route path="/withdraw/"       element={<Withdraw/>} />
               <Route path="/balance/"        element={<Balance/>} />

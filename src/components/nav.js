@@ -18,9 +18,6 @@ function Nav() {
               <Link className="nav-link" to="/create-account/">Create Account</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/login/">Login</Link>
-            </li>
-            <li className="nav-item">
               <Link className="nav-link" to="/deposit/">Deposit</Link>
             </li>
             <li className="nav-item">
