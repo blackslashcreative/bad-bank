@@ -11,9 +11,10 @@ function AllData() {
     const userTable = users.map(user => {
       return (
         <tr>
-          <td>user.username</td>
-          <td>user.email</td>
-          <td>user.password</td>
+          <td>{user.username}</td>
+          <td>{user.email}</td>
+          <td>{user.password}</td>
+          <td>{user.balance}</td>
         </tr>
       )
     })
@@ -29,6 +30,7 @@ function AllData() {
             <th>Username</th>
             <th>Email</th>
             <th>Password</th>
+            <th>Balance</th>
           </thead>
           <tbody>
             {printRows()}
