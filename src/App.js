@@ -6,10 +6,8 @@ import {
 import Nav from "./components/nav.js";
 import Home from "./components/home.js";
 import CreateAccount from "./components/create-account.js";
-//import Login from "./components/login.js";
 import Deposit from "./components/deposit.js";
 import Withdraw from "./components/withdraw.js";
-import Balance from "./components/balance.js";
 import AllData from "./components/all-data.js";
 import { BankContext } from './BankContext.js';
 
