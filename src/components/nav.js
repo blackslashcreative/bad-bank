@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import logo from '../img/logo.svg';
 
 function Nav() {
@@ -12,19 +12,19 @@ function Nav() {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
             <li className="nav-item">
-              <Link className="nav-link" to="/">Home</Link>
+              <NavLink className="nav-link" to="/">Home</NavLink>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/create-account/">Register</Link>
+              <NavLink className="nav-link" to="/create-account/">Register</NavLink>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/deposit/">Deposit</Link>
+              <NavLink className="nav-link" to="/deposit/">Deposit</NavLink>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/withdraw/">Withdraw</Link>
+              <NavLink className="nav-link" to="/withdraw/">Withdraw</NavLink>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/all-data/">All Data</Link>
+              <NavLink className="nav-link" to="/all-data/">All Data</NavLink>
             </li>
           </ul>
         </div>
