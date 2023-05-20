@@ -55,8 +55,12 @@ function BankForm({formName, hideEmail}){
         let prevBalance = currentUser.balance;
         if (formName === "Deposit") {
           currentUser.balance = Number(prevBalance) + Number(amount);
-        } else {
-          currentUser.balance = Number(prevBalance) - Number(amount);
+        } else /* withdraw */ {
+          if (currentUser.balance >= Number(amount)) {
+            currentUser.balance = Number(prevBalance) - Number(amount);
+          } else {
+            setErrorMessage('Transaction failed.');
+          }
         }
         setAmount(currentUser.balance);
       }
